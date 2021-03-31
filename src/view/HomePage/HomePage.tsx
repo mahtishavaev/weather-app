@@ -1,20 +1,16 @@
 import { FC } from "react";
-import styled from "styled-components";
 import { Footer } from "../Footer/Footer";
-import { Search } from "./Search";
+import { SearchForm } from "./SearchForm";
 import { WorldMap } from "./WorldMap";
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background-color: #100e1d;
-`;
+import { Aside } from "../Aside/Aside";
+import { Main } from "../Main/Main";
 
 export const HomePage: FC = () => {
   return (
     <>
-      <Search />
+      <Aside>
+        <SearchForm />
+      </Aside>
       <Main>
         <WorldMap />
         <Footer />

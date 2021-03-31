@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     background:#FAFAFA;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 `;
 
