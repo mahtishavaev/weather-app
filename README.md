@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment variables
+
+Create `.env.local` file in the root folder.
+
+Add the following variables to the file:  
+`REACT_APP_MAPBOX_TOKEN=<mapbox api token>`
+`REACT_APP_API_URL=<backend url>`
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -4,14 +4,14 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import MarkerIcon from "../../assets/icons/marker.svg";
 
-const icon = L.icon({ iconUrl: MarkerIcon, iconSize: [30, 30], iconAnchor: [15, 30] });
+const markerIcon = L.icon({ iconUrl: MarkerIcon, iconSize: [30, 30], iconAnchor: [15, 30] });
 
 export const WorldMap: FC = () => {
   const [map, setMap] = useState<L.Map>();
 
   return (
     <>
-      {true && (
+      {false && (
         <MapContainer style={{ height: "100%" }} center={[20, 0]} zoom={2} whenCreated={setMap}>
           <TileLayer
             attribution='© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -19,7 +19,7 @@ export const WorldMap: FC = () => {
             tileSize={512}
             zoomOffset={-1}
           />
-          <Marker icon={icon} position={[20, 0]}></Marker>
+          <Marker icon={markerIcon} position={[20, 0]}></Marker>
         </MapContainer>
       )}
     </>

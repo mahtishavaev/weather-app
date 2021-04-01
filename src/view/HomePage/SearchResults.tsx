@@ -1,17 +1,28 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { ReactComponent as ArrowIcon } from "../../assets/icons/right-arrow.svg";
+import { ReactComponent as PointIcon } from "../../assets/icons/geo-point.svg";
+import { getLocations } from "../../redux/locationsSlice";
 
 const Inner = styled.div`
   margin-top: 50px;
+  overflow-y: scroll;
+  max-height: 500px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ResultWrapper = styled.div`
   display: flex;
+  align-items: center;
   margin-bottom: 5px;
 `;
 
-const Button = styled.div`
+const Location = styled.div`
   flex: 1;
   position: relative;
   font-weight: 500;
@@ -33,26 +44,36 @@ const RightArrowIcon = styled(ArrowIcon)`
   width: 15px;
   height: 15px;
   fill: transparent;
-  ${Button}:hover & {
+  ${Location}:hover & {
     fill: #616475;
   }
 `;
 
+const GeoPoint = styled(PointIcon)`
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  margin-left: 10px;
+  fill: #e7e7eb;
+  background-color: #6e707a;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
 export const SearchResults: FC = () => {
+  const locations = useSelector(getLocations);
+
   return (
     <Inner>
-      <ResultWrapper>
-        <Button>
-          Result
-          <RightArrowIcon />
-        </Button>
-      </ResultWrapper>
-      <ResultWrapper>
-        <Button>
-          Result
-          <RightArrowIcon />
-        </Button>
-      </ResultWrapper>
+      {locations.map((el) => (
+        <ResultWrapper key={el.geoname_id}>
+          <Location>
+            {el.name}, {el.country}
+            <RightArrowIcon />
+          </Location>
+          <GeoPoint />
+        </ResultWrapper>
+      ))}
     </Inner>
   );
 };

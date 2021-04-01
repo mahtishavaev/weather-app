@@ -1,6 +1,8 @@
 import { FC, useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import { searchLocations } from "../../redux/locationsSlice";
 
 const Form = styled.form`
   display: flex;
@@ -54,9 +56,11 @@ const Button = styled.button`
 
 export const SearchForm: FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const dispatch = useDispatch();
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (searchQuery) dispatch(searchLocations(searchQuery));
   };
 
   return (
