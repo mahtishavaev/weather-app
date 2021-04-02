@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { ReactComponent as ArrowIcon } from "../../assets/icons/right-arrow.svg";
 import { ReactComponent as PointIcon } from "../../assets/icons/geo-point.svg";
-import { getLocations } from "../../redux/locationsSlice";
+import { getLocations, setCurrentLocation } from "../../redux/locationsSlice";
 
 const Inner = styled.div`
   margin-top: 50px;
@@ -62,6 +62,7 @@ const GeoPoint = styled(PointIcon)`
 
 export const SearchResults: FC = () => {
   const locations = useSelector(getLocations);
+  const dispatch = useDispatch();
 
   return (
     <Inner>
@@ -71,7 +72,7 @@ export const SearchResults: FC = () => {
             {el.name}, {el.country}
             <RightArrowIcon />
           </Location>
-          <GeoPoint />
+          <GeoPoint onClick={() => dispatch(setCurrentLocation(el))} />
         </ResultWrapper>
       ))}
     </Inner>

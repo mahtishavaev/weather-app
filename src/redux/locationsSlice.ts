@@ -19,12 +19,14 @@ type RequestType = {
 
 export type LocationsState = {
   entities: LocationType[];
+  currentLocation: LocationType | null;
   request: RequestType;
 };
 
 //initial state
 const initState: LocationsState = {
   entities: [],
+  currentLocation: null,
   request: {
     status: "idle",
     error: null,
@@ -40,6 +42,7 @@ export const locationsReducer = (
     case "locations/setErrorMessage":
       return {
         entities: [],
+        currentLocation: null,
         request: {
           error: action.payload,
           status: "failed",
@@ -56,10 +59,16 @@ export const locationsReducer = (
     case "locations/setLocations":
       return {
         entities: action.payload,
+        currentLocation: null,
         request: {
           status: "succeeded",
           error: null,
         },
+      };
+    case "locations/setCurrentLocation":
+      return {
+        ...state,
+        currentLocation: action.payload,
       };
     default:
       return state;
@@ -89,12 +98,17 @@ const setErrorMessage = (message: string) =>
 const setLocations = (locations: LocationType[]) =>
   ({ type: "locations/setLocations", payload: locations } as const);
 
+export const setCurrentLocation = (location: LocationType) =>
+  ({ type: "locations/setCurrentLocation", payload: location } as const);
+
 export type LocationsActions =
   | ReturnType<typeof setRequestStatus>
   | ReturnType<typeof setErrorMessage>
-  | ReturnType<typeof setLocations>;
+  | ReturnType<typeof setLocations>
+  | ReturnType<typeof setCurrentLocation>;
 
 //selectors
 export const getLocations = (state: AppState) => state.locations.entities;
+export const getCurrentLocation = (state: AppState) => state.locations.currentLocation;
 export const getRequestStatus = (state: AppState) => state.locations.request.status;
 export const getRequestError = (state: AppState) => state.locations.request.error;
