@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ReactComponent as ArrowIcon } from "../../assets/icons/right-arrow.svg";
 import { ReactComponent as PointIcon } from "../../assets/icons/geo-point.svg";
 import { getLocations, setCurrentLocation } from "../../redux/locationsSlice";
+import { Link } from "react-router-dom";
 
 const Inner = styled.div`
   margin-top: 50px;
@@ -22,11 +23,12 @@ const ResultWrapper = styled.div`
   margin-bottom: 5px;
 `;
 
-const Location = styled.div`
+const Location = styled(Link)`
   flex: 1;
   position: relative;
   font-weight: 500;
   font-size: 16px;
+  text-decoration: none;
   color: #e7e7eb;
   border: 1px solid transparent;
   padding: 18px 40px 18px 12px;
@@ -38,7 +40,7 @@ const Location = styled.div`
 
 const RightArrowIcon = styled(ArrowIcon)`
   position: absolute;
-  right: 20px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
   width: 15px;
@@ -68,7 +70,7 @@ export const SearchResults: FC = () => {
     <Inner>
       {locations.map((el) => (
         <ResultWrapper key={el.geoname_id}>
-          <Location>
+          <Location to={`weather?lat=${el.latitude}&lon=${el.longitude}`}>
             {el.name}, {el.country}
             <RightArrowIcon />
           </Location>

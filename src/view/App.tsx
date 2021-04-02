@@ -1,5 +1,7 @@
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { HomePage } from "./HomePage/HomePage";
+import { WeatherPage } from "./WeatherPage/WeatherPage";
 
 const Inner = styled.div`
   display: flex;
@@ -20,9 +22,19 @@ const GlobalStyle = createGlobalStyle`
 
 export function App() {
   return (
-    <Inner>
-      <GlobalStyle />
-      <HomePage />
-    </Inner>
+    <BrowserRouter>
+      <Inner>
+        <GlobalStyle />
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/weather">
+            <WeatherPage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </Inner>
+    </BrowserRouter>
   );
 }
