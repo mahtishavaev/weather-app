@@ -7,8 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Create `.env.local` file in the root folder.
 
 Add the following variables to the file:  
-`REACT_APP_MAPBOX_TOKEN=<mapbox api token>`
-`REACT_APP_API_URL=<backend url>`
+`REACT_APP_API_URL=<api url>`
 
 ## Available Scripts
 
