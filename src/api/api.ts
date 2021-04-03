@@ -10,11 +10,10 @@ const fetchLocations = async (searchQuery: string) => {
   return await axios.get(url, { params: queryParams });
 };
 
-const fetchWeather = async (lat: string, lon: string) => {
+const fetchWeather = async (locationId: string) => {
   const url = `${apiUrl}/weather`;
   const queryParams = {
-    lat,
-    lon,
+    id: locationId,
   };
   return await axios.get(url, { params: queryParams });
 };

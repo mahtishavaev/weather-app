@@ -11,6 +11,7 @@ const Form = styled.form`
 
 const InputWrapper = styled.div`
   position: relative;
+  flex: 1;
 `;
 
 const InputIcon = styled(SearchIcon)`

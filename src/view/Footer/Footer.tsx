@@ -5,7 +5,7 @@ const Inner = styled.footer`
   text-align: center;
   font-size: 14px;
   color: #a09fb1;
-  padding: 24px;
+  padding: 15px;
   margin-top: auto;
 `;
 

@@ -27,7 +27,12 @@ export const WorldMap: FC = () => {
   }, [location, map]);
 
   return (
-    <MapContainer style={{ height: "100%" }} center={[20, 0]} zoom={2} whenCreated={setMap}>
+    <MapContainer
+      style={{ height: "100%", minHeight: 400 }}
+      center={[20, 0]}
+      zoom={2}
+      whenCreated={setMap}
+    >
       <TileLayer
         // attribution='© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         // url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}

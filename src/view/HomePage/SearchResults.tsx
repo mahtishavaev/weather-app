@@ -8,13 +8,6 @@ import { Link } from "react-router-dom";
 
 const Inner = styled.div`
   margin-top: 50px;
-  overflow-y: scroll;
-  max-height: 500px;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const ResultWrapper = styled.div`
@@ -70,7 +63,7 @@ export const SearchResults: FC = () => {
     <Inner>
       {locations.map((el) => (
         <ResultWrapper key={el.geoname_id}>
-          <Location to={`weather?lat=${el.latitude}&lon=${el.longitude}`}>
+          <Location to={`weather/${el.geoname_id}`}>
             {el.name}, {el.country}
             <RightArrowIcon />
           </Location>

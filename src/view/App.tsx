@@ -5,6 +5,7 @@ import { WeatherPage } from "./WeatherPage/WeatherPage";
 
 const Inner = styled.div`
   display: flex;
+  flex-wrap: wrap;
   min-height: 100vh;
 `;
 
@@ -29,7 +30,7 @@ export function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/weather">
+          <Route path="/weather/:id">
             <WeatherPage />
           </Route>
           <Redirect to="/" />

@@ -98,7 +98,7 @@ const setErrorMessage = (message: string) =>
 const setLocations = (locations: LocationType[]) =>
   ({ type: "locations/setLocations", payload: locations } as const);
 
-export const setCurrentLocation = (location: LocationType) =>
+export const setCurrentLocation = (location: LocationType | null) =>
   ({ type: "locations/setCurrentLocation", payload: location } as const);
 
 export type LocationsActions =
