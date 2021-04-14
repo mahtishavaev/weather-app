@@ -1,13 +1,12 @@
-# Getting Started with Create React App
+# Weather app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
 
-## Environment variables
+https://weather-app-mahti.netlify.app/
 
-Create `.env.local` file in the root folder.
+## Backend
 
-Add the following variables to the file:  
-`REACT_APP_API_URL=<api url>`
+https://github.com/mahtishavaev/weather-app-be
 
 ## Available Scripts
 
