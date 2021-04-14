@@ -83,7 +83,11 @@ export const searchLocations = (locationName: string) => {
       const response = await api.fetchLocations(locationName);
       dispatch(setLocations(response.data));
     } catch (error) {
-      dispatch(setErrorMessage(error.message));
+      if (error.response.data.message) {
+        dispatch(setErrorMessage(error.response.data.message));
+      } else {
+        dispatch(setErrorMessage(error.message));
+      }
     }
   };
 };

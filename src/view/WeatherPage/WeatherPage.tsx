@@ -6,6 +6,7 @@ import {
   fetchWeather,
   getCurrentWeather,
   getForecastWeather,
+  getRequestError,
   getRequestStatus,
   getTempUnit,
 } from "../../redux/weatherSlice";
@@ -17,6 +18,7 @@ import { ForecastCard } from "./ForecatsCard";
 import { TempSwitcher } from "./TempSwitcher";
 import { Highlight } from "./Highlight";
 import { Preloader } from "../Preloader/Preloader";
+import { ErrorBlock } from "../ErrorBlock/ErrorBlock";
 
 const Container = styled.div`
   max-width: 768px;
@@ -71,6 +73,7 @@ export const WeatherPage: FC = () => {
   const currentWeather = useSelector(getCurrentWeather);
   const tempUnit = useSelector(getTempUnit);
   const status = useSelector(getRequestStatus);
+  const error = useSelector(getRequestError);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -80,6 +83,7 @@ export const WeatherPage: FC = () => {
   return (
     <>
       {status === "loading" && <Preloader />}
+      {status === "failed" && <ErrorBlock>{error}</ErrorBlock>}
       {status === "succeeded" && (
         <>
           <Aside>

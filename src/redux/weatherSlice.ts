@@ -139,8 +139,11 @@ export const fetchWeather = (locationId: string) => {
       };
       dispatch(setWeather(weather));
     } catch (error) {
-      console.error(error.response.data.message);
-      dispatch(setErrorMessage(error.response.data.message));
+      if (error.response.data.message) {
+        dispatch(setErrorMessage(error.response.data.message));
+      } else {
+        dispatch(setErrorMessage(error.message));
+      }
     }
   };
 };

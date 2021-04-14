@@ -6,11 +6,13 @@ import { Aside } from "../Aside/Aside";
 import { Main } from "../Main/Main";
 import { SearchResults } from "./SearchResults";
 import { useDispatch, useSelector } from "react-redux";
-import { getRequestStatus, setCurrentLocation } from "../../redux/locationsSlice";
+import { getRequestError, getRequestStatus, setCurrentLocation } from "../../redux/locationsSlice";
 import { Preloader } from "../Preloader/Preloader";
+import { ErrorBlock } from "../ErrorBlock/ErrorBlock";
 
 export const HomePage: FC = () => {
   const status = useSelector(getRequestStatus);
+  const error = useSelector(getRequestError);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCurrentLocation(null));
@@ -18,6 +20,7 @@ export const HomePage: FC = () => {
   return (
     <>
       {status === "loading" && <Preloader />}
+      {status === "failed" && <ErrorBlock>{error}</ErrorBlock>}
       <Aside>
         <SearchForm />
         <SearchResults />
