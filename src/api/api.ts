@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = process.env.REACT_APP_API_URL || "";
+const apiUrl = "https://weather-app-be-mahti.herokuapp.com";
 
 const fetchLocations = async (searchQuery: string) => {
   const url = `${apiUrl}/places`;
